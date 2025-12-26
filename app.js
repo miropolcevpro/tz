@@ -546,6 +546,10 @@ function pointInUI(target){
   
 
 // Depth-sensing / occlusion
+// Small depth bias (meters) to reduce flicker / false suggestive occlusion on edges.
+// Must be defined BEFORE occlusionUniforms usage.
+const OCCLUSION_EPSILON_M = 0.02;
+
 let depthSupported = false;
 let occlusionEnabled = true; // default ON if supported           // default ON when supported
 let occlusionAutoInit = false;         // enable only once when depth becomes available
