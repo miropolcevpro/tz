@@ -42,6 +42,14 @@ function updateOcclusionUI(){
   occlusionToggle.textContent = occlusionEnabled ? "Occlusion: On" : "Occlusion: Off";
 }
 
+// Floor quality (агрессивная блокировка ранней фиксации — как у marevo)
+const QUALITY_MIN_SAMPLES = 25;          // минимум семплов, прежде чем разрешать калибровку
+const QUALITY_WINDOW_SECONDS = 1.4;      // окно для оценки дрожания (сек)
+const QUALITY_STABLE_SECONDS = 0.8;      // сколько держать "зелёный" подряд
+const QUALITY_MIN_DISTANCE_M = 0.35;     // не фиксируем слишком близко к камере
+const QUALITY_JITTER_GOOD_M = 0.010;     // зелёный: ~1см rms
+const QUALITY_JITTER_OK_M   = 0.018;     // жёлтый: ~1.8см rms
+
 function computeFloorQuality(nowSec){
   const n = qualitySamples.length;
   if(n < QUALITY_MIN_SAMPLES){
@@ -672,8 +680,9 @@ renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   const _bestPos = new THREE.Vector3();
   const _bestQuat = new THREE.Quaternion();
   const _tmpNormal = new THREE.Vector3();
-  const FLOOR_Y_EPS = 0.03; // meters tolerance to lock to calibrated floor
-const HIT_NORMAL_DOT = 0.90;   
+  const _camPos = new THREE.Vector3();
+  const FLOOR_Y_EPS = 0.01; // 1cm default tolerance // meters tolerance to lock to calibrated floor
+const HIT_NORMAL_DOT = 0.93; // more strict: block walls/verticals   
 // After floor calibration we additionally lock to this Y tolerance (meters)
 const FLOOR_Y_TOLERANCE = 0.02; // 2 cm
 const FLOOR_Y_TOLERANCE_PRECALIB = 0.08; // 8 cm (used only for UX hints, not strict)
@@ -1032,60 +1041,41 @@ function normalizeAngle(a){
 
   
   function updateDrawUI(){
-    if(mode !== "draw"){
-      hideAction();
-      drawStatus.textContent = "";
-      return;
-    }
-
-    // Require floor calibration before allowing points
-    if(!floorLocked){
-      closePolyBtn.textContent = "Замкнуть контур";
-      closePolyBtn.disabled = true;
-      drawStatus.textContent = "Наведите маркер на пол и нажмите «Калибр. пол», затем ставьте точки.";
-      hideAction();
-      return;
-    }
-
-    if(drawPoints.length === 0){
-      areaOut.textContent = "—";
-      closePolyBtn.textContent = "Замкнуть контур";
-      closePolyBtn.disabled = true;
-      drawStatus.textContent = "Тапайте по полу, чтобы поставить точки контура.";
-      hideAction();
-      return;
-    }
-
-    if(!drawClosed){
-      closePolyBtn.textContent = "Замкнуть контур";
-      closePolyBtn.disabled = (drawPoints.length < 3);
-      if(drawPoints.length < 3){
-        drawStatus.textContent = "Поставьте минимум 3 точки, чтобы замкнуть контур.";
-        }
-      } else {
-        drawStatus.textContent = "Чтобы замкнуть: нажмите «Замкнуть контур» или тапните рядом с первой точкой.";
-      }
-      hideAction();
-      return;
-    }
-
-    // drawClosed === true  → show CTA
-    closePolyBtn.textContent = "Контур замкнут";
+  if(mode !== "draw"){
+    hideAction();
+    drawStatus.textContent = "";
+    closePolyBtn.style.display = "none";
     closePolyBtn.disabled = true;
-
-    if(surfaceReady && surfaceType === "poly"){
-      drawStatus.textContent = "Заливка выполнена. Можно сделать скриншот.";
-      showAction("Сделать скриншот", {secondary:true}, ()=>takeScreenshot());
-    }else{
-      drawStatus.textContent = "Контур замкнут. Нажмите «Визуализировать».";
-      showAction("Визуализировать", {}, ()=>{
-        closePolygon();
-        updateDrawUI();
-      });
-    }
+    return;
   }
 
-  function rebuildDrawLine(livePoint){
+  if(!drawClosed){
+    closePolyBtn.style.display = "inline-flex";
+    closePolyBtn.disabled = drawPoints.length < 3;
+
+    if(drawPoints.length < 3){
+      drawStatus.textContent = "Поставьте минимум 3 точки по полу";
+    } else {
+      drawStatus.textContent = "Наведитесь на первую точку и замкните контур";
+    }
+
+    hideAction();
+    return;
+  }
+
+  closePolyBtn.style.display = "none";
+  closePolyBtn.disabled = true;
+
+  if(!fillMesh){
+    drawStatus.textContent = "Контур замкнут. Нажмите «Визуализировать».";
+    showAction("Визуализировать");
+  } else {
+    drawStatus.textContent = "Готово. Можно сделать скриншот.";
+    showAction("Сделать скриншот");
+  }
+}
+
+function rebuildDrawLine(livePoint){
     if(drawLine){
       drawGroup.remove(drawLine);
       drawLine.geometry.dispose();
@@ -1733,120 +1723,184 @@ function normalizeAngle(a){
       }catch(_){ }
     }
 
-    // XR hit-test (стабильная привязка к полу)
+    // XR hit-test: фильтруем "пол" + считаем качество пола (блокировка ранней фиксации)
+
     if(frame && hitTestSource){
+
       const refSpace = renderer.xr.getReferenceSpace();
-      const hits = frame.getHitTestResults(hitTestSource);
+
+      const hitTestResults = frame.getHitTestResults(hitTestSource);
+
 
       let found = false;
-      let bestY = Infinity;
-      let bestDot = -1;
 
-      let _bestHitResult = null;
-      for(const hit of hits){
+      let bestHit = null;
+
+      let bestUpDot = -1;
+
+
+      for(const hit of hitTestResults){
+
         const pose = hit.getPose(refSpace);
+
         if(!pose) continue;
 
+
         _tmpMat.fromArray(pose.transform.matrix);
-        _tmpPos.setFromMatrixPosition(_tmpMat);
-        _tmpQuat.setFromRotationMatrix(_tmpMat);
 
-        // Нормаль плоскости (локальная Y ось позы)
-        _tmpNormal.set(0,1,0).applyQuaternion(_tmpQuat);
-        const dot = _tmpNormal.dot(_worldUp);
-        if(dot < HIT_NORMAL_DOT) continue; // отбрасываем стены/наклонные
+        _tmpMat.decompose(_tmpPos, _tmpQuat, _tmpScale);
 
-        const y = _tmpPos.y;
-        if(!found || y < bestY - 0.01 || (Math.abs(y - bestY) < 0.01 && dot > bestDot)){
-          found = true;
-          bestY = y;
-          bestDot = dot;
+
+        _tmpNormal.set(0,1,0).applyQuaternion(_tmpQuat).normalize();
+
+        const upDot = _tmpNormal.dot(_worldUp);
+
+        if(upDot < HIT_NORMAL_DOT) continue;
+
+
+        if(floorLocked && Math.abs(_tmpPos.y - lockedFloorY) > FLOOR_Y_EPS) continue;
+
+
+        if(upDot > bestUpDot){
+
+          bestUpDot = upDot;
+
+          bestHit = hit;
+
           _bestPos.copy(_tmpPos);
+
           _bestQuat.copy(_tmpQuat);
-          _bestHitResult = hit;
+
+          found = true;
+
         }
+
       }
+
 
       if(found){
-        // store best hit for calibration/anchors
-        lastBestHit = _bestHitResult || lastBestHit;
+
+        camera.getWorldPosition(_camPos);
+
+        const dist = _camPos.distanceTo(_bestPos);
+
+
+        // Считаем качество только ДО калибровки пола
+
+        if(!floorLocked && dist >= QUALITY_MIN_DISTANCE_M){
+
+          const nowSec = performance.now() / 1000;
+
+
+          qualitySamples.push({ t: nowSec, pos: _bestPos.clone() });
+
+          while(qualitySamples.length && (nowSec - qualitySamples[0].t) > QUALITY_WINDOW_SECONDS){
+
+            qualitySamples.shift();
+
+          }
+
+
+          const stableReady = computeFloorQuality(nowSec);
+
+          if(calibBtn) calibBtn.disabled = !stableReady;
+
+        } else {
+
+          if(calibBtn && !floorLocked) calibBtn.disabled = true;
+
+          if(!floorLocked){
+
+            floorQuality = 0;
+
+            floorQualityState = "bad";
+
+            qualityStableSince = 0;
+
+            updateFloorQualityUI();
+
+          }
+
+        }
+
+
+        lastBestHit = bestHit;
+
+
+        // сглаживаем ретикл
 
         if(!lastHitValid){
+
           lastHitPos.copy(_bestPos);
-        // Floor quality sampling window (только для валидного floor-hit)
-        const dist = _bestPos.distanceTo(camPos);
-        if(dist >= QUALITY_MIN_DISTANCE_M){
-          qualitySamples.push({ pos: _bestPos.clone(), t: performance.now()/1000 });
-          if(qualitySamples.length > QUALITY_WINDOW_MAX) qualitySamples.shift();
-        }else{
-          qualitySamples.length = 0;
-          qualityStableSince = 0;
-        }
-        const stableReady = computeFloorQuality(performance.now()/1000);
-        if(calibBtn) calibBtn.disabled = !stableReady;
 
           lastHitQuat.copy(_bestQuat);
-          lastHitValid = true;
+
+          lastHitValid=true;
+
         }else{
+
           lastHitPos.lerp(_bestPos, HIT_SMOOTHING);
+
           lastHitQuat.slerp(_bestQuat, HIT_SMOOTHING);
+
         }
 
-        reticle.visible = true;
 
-        // Подсветка «замкнуть контур»: когда прицел рядом с первой точкой — делаем его оранжевым и чуть больше
-        if(mode==="draw" && drawOrigin && drawPoints.length >= 3 && !drawClosed){
-          const _tmpLocal = worldToLockedLocal(lastHitPos, new THREE.Vector3());
-          const dSnap = distXZ(_tmpLocal, drawOrigin);
-          if(dSnap < DRAW_SNAP_M){
-            reticleMat.color.setHex(0xf59e0b);
-            _hitScale.set(1.35, 1.35, 1.35);
-          }else{
-            reticleMat.color.setHex(0x22c55e);
-            _hitScale.set(1,1,1);
-          }
-        }else{
-          reticleMat.color.setHex(0x22c55e);
-          _hitScale.set(1,1,1);
+        reticle.visible=true;
+
+        reticle.position.copy(lastHitPos);
+
+        if(floorLocked){
+
+          reticle.position.y = lockedFloorY;
+
         }
 
-        // After floor calibration: accept hits only near the locked floor height (prevents walls/tables)
-        if(floorLocked && lockedFloorY != null){
-          if(Math.abs(lastHitPos.y - lockedFloorY) > FLOOR_Y_EPS){
-            reticle.visible = false;
-            lastHitValid = false;
-            lastBestHit = null;
-            // Reset floor quality when we lose floor hit
-            qualitySamples.length = 0;
-            qualityStableSince = 0;
-            floorQuality = 0;
-            floorQualityState = "bad";
-            updateFloorQualityUI();
-            if(calibBtn) calibBtn.disabled = true;
+        reticle.quaternion.set(0,0,0,1);
 
-          }else{
-            lastHitPos.y = lockedFloorY;
-          }
+        reticle.matrix.compose(reticle.position, reticle.quaternion, reticle.scale);
+
+
+        if(mode==="draw" && floorLocked && drawPoints.length>0 && !drawClosed){
+
+          rebuildDrawLine(reticle.position);
+
         }
 
-        if(reticle.visible){
-          reticle.matrix.compose(lastHitPos, lastHitQuat, _hitScale);
-
-        // live draw line preview
-        if(mode==="draw" && drawPoints.length){
-          const _liveLocal = worldToLockedLocal(lastHitPos, new THREE.Vector3());
-          rebuildDrawLine(_liveLocal);
-        }
       } else {
-        reticle.visible = false;
-        lastHitValid = false;
-        lastBestHit = null;
 
-        // если контур открыт — уберём "живой" сегмент
-        if(mode==="draw" && drawPoints.length){
-          rebuildDrawLine(null);
+        reticle.visible=false;
+
+        lastHitValid=false;
+
+        if(calibBtn && !floorLocked) calibBtn.disabled = true;
+
+
+        if(!floorLocked){
+
+          floorQuality = 0;
+
+          floorQualityState = "bad";
+
+          qualityStableSince = 0;
+
+          updateFloorQualityUI();
+
         }
+
+
+        if(mode==="draw" && drawPoints.length>0 && !drawClosed){
+
+          rebuildDrawLine(null);
+
+        }
+
       }
+
+    } else {
+
+      if(calibBtn && !floorLocked) calibBtn.disabled = true;
+
     }
 
     // Non-AR preview: keep surface on origin
