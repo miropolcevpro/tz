@@ -1,14 +1,3 @@
-
-const OCCLUSION_EPSILON_M = 0.02; // meters: depth bias to reduce artifacts
-
-const occlusionUniforms = {
-  uDepthTex: { value: null },
-  uDepthTransform: { value: null },     // THREE.Matrix4
-  uViewport: { value: null },           // THREE.Vector4
-  uFramebuffer: { value: null },        // THREE.Vector2
-  uOcclusionEnabled: { value: 0.0 },
-  uEpsilon: { value: OCCLUSION_EPSILON_M },
-};
 // Paver WebAR MVP (GitHub Pages ready)
 // - WebXR immersive-ar on Android Chrome (ARCore)
 // - Draw contour polygon
@@ -554,8 +543,24 @@ function pointInUI(target){
     }
   }
 
-  // (occlusionUniforms moved to top)
+  
 
+// Depth-sensing / occlusion
+let depthSupported = false;
+let occlusionEnabled = true; // default ON if supported           // default ON when supported
+let occlusionAutoInit = false;         // enable only once when depth becomes available
+let depthTexture = null;               // THREE.DataTexture (meters)
+let depthW = 0, depthH = 0;
+let lastDepthUpdateTs = 0;
+
+const occlusionUniforms = {
+  uDepthTex: { value: null },
+  uDepthTransform: { value: null },     // THREE.Matrix4
+  uViewport: { value: null },           // THREE.Vector4
+  uFramebuffer: { value: null },        // THREE.Vector2
+  uOcclusionEnabled: { value: 0.0 },
+  uEpsilon: { value: OCCLUSION_EPSILON_M },
+};
 
 // Three.js init
   const canvas = $("c");
@@ -710,18 +715,6 @@ const qualitySamples = [];              // {pos:THREE.Vector3, t:number}
 let qualityStableSince = 0;             // seconds when became stable
 let floorQuality = 0;                   // 0..1
 let floorQualityState = "bad";          // bad|mid|good
-
-// Depth-sensing / occlusion
-let depthSupported = false;
-let occlusionEnabled = false;           // default ON when supported
-let occlusionAutoInit = false;         // enable only once when depth becomes available
-let depthTexture = null;               // THREE.DataTexture (meters)
-let depthW = 0, depthH = 0;
-let lastDepthUpdateTs = 0;
-
-// (moved occlusionUniforms earlier)
-
-
   let lockedFloorY = 0;
   let gridEnabled = true; // default ON
   let floorAnchor = null;
