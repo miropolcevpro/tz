@@ -1,3 +1,14 @@
+
+const OCCLUSION_EPSILON_M = 0.02; // meters: depth bias to reduce artifacts
+
+const occlusionUniforms = {
+  uDepthTex: { value: null },
+  uDepthTransform: { value: null },     // THREE.Matrix4
+  uViewport: { value: null },           // THREE.Vector4
+  uFramebuffer: { value: null },        // THREE.Vector2
+  uOcclusionEnabled: { value: 0.0 },
+  uEpsilon: { value: OCCLUSION_EPSILON_M },
+};
 // Paver WebAR MVP (GitHub Pages ready)
 // - WebXR immersive-ar on Android Chrome (ARCore)
 // - Draw contour polygon
@@ -543,7 +554,10 @@ function pointInUI(target){
     }
   }
 
-  // Three.js init
+  // (occlusionUniforms moved to top)
+
+
+// Three.js init
   const canvas = $("c");
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -684,7 +698,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   const FLOOR_Y_EPS = 0.01; // 1cm default tolerance // meters tolerance to lock to calibrated floor
 const HIT_NORMAL_DOT = 0.93; // more strict: block walls/verticals   
 // After floor calibration we additionally lock to this Y tolerance (meters)
-const FLOOR_Y_TOLERANCE = 0.02; // 2 cm
+const FLOOR_Y_TOLERANCE = 0.01; // 2 cm
 const FLOOR_Y_TOLERANCE_PRECALIB = 0.08; // 8 cm (used only for UX hints, not strict)
 // чем выше, тем «горизонтальнее» должна быть плоскость (пол)
   // Floor lock & helpers
@@ -705,14 +719,8 @@ let depthTexture = null;               // THREE.DataTexture (meters)
 let depthW = 0, depthH = 0;
 let lastDepthUpdateTs = 0;
 
-const occlusionUniforms = {
-  uDepthTex: { value: null },
-  uDepthTransform: { value: null },     // THREE.Matrix4
-  uViewport: { value: null },           // THREE.Vector4
-  uFramebuffer: { value: null },        // THREE.Vector2
-  uOcclusionEnabled: { value: 0.0 },
-  uEpsilon: { value: OCCLUSION_EPSILON_M },
-};
+// (moved occlusionUniforms earlier)
+
 
   let lockedFloorY = 0;
   let gridEnabled = true; // default ON
