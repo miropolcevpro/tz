@@ -1,0 +1,86 @@
+[
+  {
+    "id": "antika",
+    "name": "Антика",
+    "preview": "forms/antika/preview.webp",
+    "image": "forms/antika/image.webp"
+  },
+  {
+    "id": "bruschatka",
+    "name": "Брусчатка",
+    "preview": "forms/bruschatka/preview.webp",
+    "image": "forms/bruschatka/image.webp"
+  },
+  {
+    "id": "gazonnaya_reshetka",
+    "name": "Газонная Решетка",
+    "preview": "forms/gazonnaya_reshetka/preview.webp",
+    "image": "forms/gazonnaya_reshetka/image.webp"
+  },
+  {
+    "id": "klassika",
+    "name": "Классика",
+    "preview": "forms/klassika/preview.webp",
+    "image": "forms/klassika/image.webp"
+  },
+  {
+    "id": "megapolis",
+    "name": "Мегаполис",
+    "preview": "forms/megapolis/preview.webp",
+    "image": "forms/megapolis/image.webp"
+  },
+  {
+    "id": "novyy_gorod",
+    "name": "Новый город",
+    "preview": "forms/novyy_gorod/preview.webp",
+    "image": "forms/novyy_gorod/image.webp"
+  },
+  {
+    "id": "paladio",
+    "name": "Паладио",
+    "preview": "forms/paladio/preview.webp",
+    "image": "forms/paladio/image.webp"
+  },
+  {
+    "id": "poligonal",
+    "name": "Полигональ",
+    "preview": "forms/poligonal/preview.webp",
+    "image": "forms/poligonal/image.webp"
+  },
+  {
+    "id": "promenad_i",
+    "name": "Променад I (40–60мм)",
+    "preview": "forms/promenad_i/preview.webp",
+    "image": "forms/promenad_i/image.webp"
+  },
+  {
+    "id": "promenad_ii",
+    "name": "Променад  II",
+    "preview": "forms/promenad_ii/preview.webp",
+    "image": "forms/promenad_ii/image.webp"
+  },
+  {
+    "id": "rigel",
+    "name": "Ригель",
+    "preview": "forms/rigel/preview.webp",
+    "image": "forms/rigel/image.webp"
+  },
+  {
+    "id": "staryy_gorod",
+    "name": "Старый Город",
+    "preview": "forms/staryy_gorod/preview.webp",
+    "image": "forms/staryy_gorod/image.webp"
+  },
+  {
+    "id": "bordyur_sadovyy",
+    "name": "Бордюр садовый",
+    "preview": "forms/bordyur_sadovyy/preview.webp",
+    "image": "forms/bordyur_sadovyy/image.webp"
+  },
+  {
+    "id": "bordyur_dorozhnyy",
+    "name": "Бордюр дорожный",
+    "preview": "forms/bordyur_dorozhnyy/preview.webp",
+    "image": "forms/bordyur_dorozhnyy/image.webp"
+  }
+]

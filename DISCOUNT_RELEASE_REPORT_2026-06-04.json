@@ -1,0 +1,116 @@
+{
+  "release": "discount20260604_3",
+  "date": "2026-06-04",
+  "changes": [
+    "Added volume discount rules from Excel: tile, curbstone, and separate Poligonal rules.",
+    "Discount applies to product/material price only; pallet cost remains unchanged.",
+    "UI now displays price before discount, discounted price, discount percent, savings, and next threshold.",
+    "Cart and hidden order payload include discounted totals and discount details."
+  ],
+  "rules": {
+    "tile_standard": {
+      "grey": [
+        [
+          200,
+          0
+        ],
+        [
+          500,
+          10
+        ],
+        [
+          1000,
+          15
+        ]
+      ],
+      "color": [
+        [
+          200,
+          12
+        ],
+        [
+          500,
+          13
+        ],
+        [
+          1000,
+          20
+        ]
+      ],
+      "mix": [
+        [
+          200,
+          15
+        ],
+        [
+          500,
+          18
+        ],
+        [
+          1000,
+          22
+        ]
+      ]
+    },
+    "tile_poligonal": {
+      "grey": [
+        [
+          200,
+          0
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          1000,
+          5
+        ]
+      ],
+      "color": [
+        [
+          200,
+          2
+        ],
+        [
+          500,
+          3
+        ],
+        [
+          1000,
+          10
+        ]
+      ],
+      "mix": [
+        [
+          200,
+          5
+        ],
+        [
+          500,
+          8
+        ],
+        [
+          1000,
+          12
+        ]
+      ]
+    },
+    "curb": {
+      "all": [
+        [
+          400,
+          15
+        ],
+        [
+          1000,
+          18
+        ],
+        [
+          2000,
+          24
+        ]
+      ]
+    }
+  }
+}

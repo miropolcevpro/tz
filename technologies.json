@@ -1,0 +1,22 @@
+[
+  {
+    "id": "mono",
+    "name": "Однотонная",
+    "palette": "palettes_mono.json"
+  },
+  {
+    "id": "colormix",
+    "name": "ColorMix",
+    "palette": "palettes_colormix.json"
+  },
+  {
+    "id": "stonemix",
+    "name": "StoneMix",
+    "palette": "palettes_stonemix.json"
+  },
+  {
+    "id": "colormix_fakt",
+    "name": "Фактурный ColorMix",
+    "palette": "palettes_colormix.json"
+  }
+]

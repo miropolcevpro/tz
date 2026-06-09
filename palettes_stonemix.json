@@ -1,0 +1,76 @@
+{
+  "tech": "stonemix",
+  "title": "StoneMix",
+  "size": [
+    320,
+    320
+  ],
+  "format": "webp_lossless_transparentpad",
+  "colors": [
+    {
+      "id": "staryy_krym_grafit",
+      "name": "Старый Крым графит",
+      "file": "technologies/stonemix/colors/staryy_krym_grafit.webp"
+    },
+    {
+      "id": "staryy_krym_cherno_belyy",
+      "name": "Старый Крым черно-белый",
+      "file": "technologies/stonemix/colors/staryy_krym_cherno_belyy.webp"
+    },
+    {
+      "id": "novyy_svet",
+      "name": "Новый свет",
+      "file": "technologies/stonemix/colors/novyy_svet.webp"
+    },
+    {
+      "id": "staryy_krym_temnyy",
+      "name": "Старый Крым темный",
+      "file": "technologies/stonemix/colors/staryy_krym_temnyy.webp"
+    },
+    {
+      "id": "koktebel",
+      "name": "Коктебель",
+      "file": "technologies/stonemix/colors/koktebel.webp"
+    },
+    {
+      "id": "kara_dag",
+      "name": "Кара-Даг",
+      "file": "technologies/stonemix/colors/kara_dag.webp"
+    },
+    {
+      "id": "kalamit",
+      "name": "Каламит",
+      "file": "technologies/stonemix/colors/kalamit.webp"
+    },
+    {
+      "id": "staryy_krym_belyy",
+      "name": "Старый Крым белый",
+      "file": "technologies/stonemix/colors/staryy_krym_belyy.webp"
+    },
+    {
+      "id": "terrakot",
+      "name": "Терракот",
+      "file": "technologies/stonemix/colors/terrakot.webp"
+    },
+    {
+      "id": "staryy_krym_chernyy",
+      "name": "Старый Крым черный",
+      "file": "technologies/stonemix/colors/staryy_krym_chernyy.webp"
+    },
+    {
+      "id": "laspi",
+      "name": "Ласпи",
+      "file": "technologies/stonemix/colors/laspi.webp"
+    },
+    {
+      "id": "kazantip",
+      "name": "Казантип",
+      "file": "technologies/stonemix/colors/kazantip.webp"
+    },
+    {
+      "id": "neapol",
+      "name": "Неаполь",
+      "file": "technologies/stonemix/colors/neapol.webp"
+    }
+  ]
+}

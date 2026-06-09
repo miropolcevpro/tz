@@ -1,0 +1,460 @@
+{
+  "meta": {
+    "source": "РЕКОМЕНДОВАННЫЕ РОЗНИЧНЫЕ ЦЕНЫ ЗАВОДА «АКТИВ ГРУПП»",
+    "vat_percent": 22,
+    "effective_from": "2026-06-03",
+    "unit_note": "цены указаны без учета доставки и тары; продажа от 1 поддона (плитка) / от 1 поддона (камень бортовой)"
+  },
+  "pavers": {
+    "unit": "m2",
+    "items": [
+      {
+        "id": "антика",
+        "name": "Антика",
+        "thickness": [
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1115.574075,
+              "mono_color1": 1300.25763,
+              "mono_color2": 1440.11,
+              "colormix_2": 1773.1756350000003,
+              "colormix_3": 1927.9682100000002,
+              "colormix_fakt": 1986.6826350000001,
+              "stonemix": 2755.307835
+            },
+            "packaging": {
+              "pcs_per_pallet": "192\n240\n240\n336\n240",
+              "pcs_per_m2": "97,50\n107,40\n120,90\n136,70\n159,50 ",
+              "m2_per_pallet": 10.2,
+              "pallet_weight_kg": 1400.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "брусчатка",
+        "name": "Брусчатка",
+        "thickness": [
+          {
+            "mm": 80,
+            "prices": {
+              "grey": 1247.948415,
+              "mono_color1": 1507.3594200000002,
+              "mono_color2": 1729.4,
+              "colormix_2": 2157.4882350000003,
+              "colormix_3": 2342.17179,
+              "colormix_fakt": 2400.8862150000004,
+              "stonemix": 3198.33486
+            },
+            "packaging": {
+              "pcs_per_pallet": 432,
+              "pcs_per_m2": 50,
+              "m2_per_pallet": 8.64,
+              "pallet_weight_kg": 1610.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "газонная_решетка",
+        "name": "Газонная решетка",
+        "thickness": [
+          {
+            "mm": 80,
+            "prices": {
+              "grey": 1381.39029,
+              "mono_color1": 1632.26,
+              "mono_color2": "по запросу",
+              "colormix_2": "по запросу",
+              "colormix_3": "по запросу",
+              "colormix_fakt": "-",
+              "stonemix": "-"
+            },
+            "packaging": {
+              "pcs_per_pallet": 40,
+              "pcs_per_m2": 4.17,
+              "m2_per_pallet": 9.6,
+              "pallet_weight_kg": 1070.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "классика",
+        "name": "Классика",
+        "thickness": [
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1026.96867,
+              "mono_color1": 1226.597715,
+              "mono_color2": 1358.972055,
+              "colormix_2": 1624.78827,
+              "colormix_3": 1743.284655,
+              "colormix_fakt": 1899.15,
+              "stonemix": 2511.92
+            },
+            "packaging": {
+              "pcs_per_pallet": 840,
+              "pcs_per_m2": 75.06,
+              "m2_per_pallet": 11.2,
+              "pallet_weight_kg": 1430.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "мегаполис",
+        "name": "Мегаполис",
+        "thickness": [
+          {
+            "mm": 80,
+            "prices": {
+              "grey": 1632.261015,
+              "mono_color1": 1765.70289,
+              "mono_color2": 1980.277425,
+              "colormix_2": 2534.32809,
+              "colormix_3": 2689.1206650000004,
+              "colormix_fakt": 2777.72,
+              "stonemix": 3516.46029
+            },
+            "packaging": {
+              "pcs_per_pallet": 40,
+              "pcs_per_m2": 5.555555555555556,
+              "m2_per_pallet": 7.2,
+              "pallet_weight_kg": 1300.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "новый_город",
+        "name": "Новый город",
+        "thickness": [
+          {
+            "mm": 40,
+            "prices": {
+              "grey": 804.9213900000001,
+              "mono_color1": 945.83601,
+              "mono_color2": 1041.92,
+              "colormix_2": 1271.434185,
+              "colormix_3": 1366.45,
+              "colormix_fakt": 1484.9411850000001,
+              "stonemix": 1816.9445699999999
+            },
+            "packaging": {
+              "pcs_per_pallet": "160\n160\n160",
+              "pcs_per_m2": "39,06\n31,25\n26,04",
+              "m2_per_pallet": 15.36,
+              "pallet_weight_kg": 1475.0
+            }
+          },
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1019.495925,
+              "mono_color1": 1226.597715,
+              "mono_color2": 1337.63,
+              "colormix_2": 1655.746785,
+              "colormix_3": 1831.8900600000002,
+              "colormix_fakt": 1869.253785,
+              "stonemix": 2453.19543
+            },
+            "packaging": {
+              "pcs_per_pallet": "120\n120\n120",
+              "pcs_per_m2": "39,06\n31,25\n26,04",
+              "m2_per_pallet": 11.52,
+              "pallet_weight_kg": 1560.0
+            }
+          },
+          {
+            "mm": 80,
+            "prices": {
+              "grey": 1247.948415,
+              "mono_color1": 1507.3594200000002,
+              "mono_color2": 1729.4,
+              "colormix_2": 2157.4882350000003,
+              "colormix_3": 2342.17179,
+              "colormix_fakt": 2400.8862150000004,
+              "stonemix": 3198.33486
+            },
+            "packaging": {
+              "pcs_per_pallet": "90\n90\n90                  ",
+              "pcs_per_m2": "39.06\n31.25\n26.04",
+              "m2_per_pallet": 8.64,
+              "pallet_weight_kg": 1610.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "палладио",
+        "name": "Палладио",
+        "thickness": [
+          {
+            "mm": 80,
+            "prices": {
+              "grey": 1247.948415,
+              "mono_color1": 1507.3594200000002,
+              "mono_color2": 1729.4,
+              "colormix_2": 2157.4882350000003,
+              "colormix_3": 2342.17179,
+              "colormix_fakt": 2400.8862150000004,
+              "stonemix": 3198.33486
+            },
+            "packaging": {
+              "pcs_per_pallet": 108,
+              "pcs_per_m2": 12.5,
+              "m2_per_pallet": 8.64,
+              "pallet_weight_kg": 1610.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "полигональ",
+        "name": "Полигональ",
+        "thickness": [
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1537.2504000000001,
+              "mono_color1": 1680.3000900000002,
+              "mono_color2": 1828.687455,
+              "colormix_2": 2369.92,
+              "colormix_3": 2520.450135,
+              "colormix_fakt": 2628.28,
+              "stonemix": 3189.8
+            },
+            "packaging": {
+              "pcs_per_pallet": "12\n12\n12\n12\n12\n12",
+              "pcs_per_m2": "9,92\n10,03\n17,35\n11,50\n11,42\n8,23",
+              "m2_per_pallet": 6.65,
+              "pallet_weight_kg": 930.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "променад_i",
+        "name": "Променад I",
+        "thickness": [
+          {
+            "mm": 40,
+            "prices": {
+              "grey": 804.9213900000001,
+              "mono_color1": 945.83601,
+              "mono_color2": 1041.92,
+              "colormix_2": 1271.434185,
+              "colormix_3": 1366.45,
+              "colormix_fakt": 1484.9411850000001,
+              "stonemix": 1816.9445699999999
+            },
+            "packaging": {
+              "pcs_per_pallet": 768,
+              "pcs_per_m2": 50,
+              "m2_per_pallet": 15.36,
+              "pallet_weight_kg": 1475.0
+            }
+          },
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1019.495925,
+              "mono_color1": 1226.597715,
+              "mono_color2": 1337.63,
+              "colormix_2": 1655.746785,
+              "colormix_3": 1831.8900600000002,
+              "colormix_fakt": 1869.253785,
+              "stonemix": 2453.19543
+            },
+            "packaging": {
+              "pcs_per_pallet": 576,
+              "pcs_per_m2": 50,
+              "m2_per_pallet": 11.52,
+              "pallet_weight_kg": 1560.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "променад_ii",
+        "name": "Променад II",
+        "thickness": [
+          {
+            "mm": 40,
+            "prices": {
+              "grey": 804.9213900000001,
+              "mono_color1": 945.83601,
+              "mono_color2": 1041.92,
+              "colormix_2": 1271.434185,
+              "colormix_3": 1366.45,
+              "colormix_fakt": 1484.9411850000001,
+              "stonemix": 1816.9445699999999
+            },
+            "packaging": {
+              "pcs_per_pallet": "168\n112",
+              "pcs_per_m2": "25\n16,7",
+              "m2_per_pallet": 13.44,
+              "pallet_weight_kg": 1290.0
+            }
+          },
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1019.495925,
+              "mono_color1": 1226.597715,
+              "mono_color2": 1337.63,
+              "colormix_2": 1655.746785,
+              "colormix_3": 1831.8900600000002,
+              "colormix_fakt": 1869.253785,
+              "stonemix": 2453.19543
+            },
+            "packaging": {
+              "pcs_per_pallet": "144\n96",
+              "pcs_per_m2": "25\n16,7",
+              "m2_per_pallet": 11.52,
+              "pallet_weight_kg": 1560.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "ригель",
+        "name": "Ригель",
+        "thickness": [
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1019.495925,
+              "mono_color1": 1226.597715,
+              "mono_color2": 1337.63,
+              "colormix_2": 1655.746785,
+              "colormix_3": 1831.8900600000002,
+              "colormix_fakt": 1869.253785,
+              "stonemix": 2453.19543
+            },
+            "packaging": {
+              "pcs_per_pallet": 384,
+              "pcs_per_m2": 33.33,
+              "m2_per_pallet": 11.52,
+              "pallet_weight_kg": 1560.0
+            }
+          }
+        ]
+      },
+      {
+        "id": "старый_город",
+        "name": "Старый город",
+        "thickness": [
+          {
+            "mm": 60,
+            "prices": {
+              "grey": 1055.8,
+              "mono_color1": 1263.96144,
+              "mono_color2": 1388.87,
+              "colormix_2": 1692.042975,
+              "colormix_3": 1780.64838,
+              "colormix_fakt": 1942.9137,
+              "stonemix": 2585.56977
+            },
+            "packaging": {
+              "pcs_per_pallet": "180\n252\n252",
+              "pcs_per_m2": "138,89\n69,44\n46,29",
+              "m2_per_pallet": 10.37,
+              "pallet_weight_kg": 1370.0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "curbstone": {
+    "unit": "piece",
+    "items": [
+      {
+        "id": "бр_100.20.8_1000х200х80",
+        "name": "БР 100.20.8 1000х200х80",
+        "width_mm": 80,
+        "prices": {
+          "grey": 348.01641000000006,
+          "mono_color1": 495.33624000000003,
+          "mono_color2": 510.28173000000004,
+          "colormix_2": 554.050665,
+          "colormix_3": 583.941645,
+          "colormix_fakt": 612.76509,
+          "stonemix": 650.128815
+        },
+        "packaging": {
+          "pcs_per_pallet": 36,
+          "pallet_weight_kg": 1340.0
+        }
+      },
+      {
+        "id": "бр_100.30.15_1000х300х150",
+        "name": "БР 100.30.15 1000х300х150",
+        "width_mm": 150,
+        "prices": {
+          "grey": 789.9759,
+          "mono_color1": "по запросу",
+          "mono_color2": "по запросу",
+          "colormix_2": "по запросу",
+          "colormix_3": "по запросу",
+          "colormix_fakt": "-",
+          "stonemix": "-"
+        },
+        "packaging": {
+          "pcs_per_pallet": 15,
+          "pallet_weight_kg": 1500.0
+        }
+      },
+      {
+        "id": "бр_100.30.18_1000х300х180",
+        "name": "БР 100.30.18 1000х300х180",
+        "width_mm": 180,
+        "prices": {
+          "grey": 887.1215850000001,
+          "mono_color1": "по запросу",
+          "mono_color2": "по запросу",
+          "colormix_2": "по запросу",
+          "colormix_3": "по запросу",
+          "colormix_fakt": "-",
+          "stonemix": "-"
+        },
+        "packaging": {
+          "pcs_per_pallet": 12,
+          "pallet_weight_kg": 1450.0
+        }
+      }
+    ]
+  },
+  "pricing_columns": {
+    "grey": "Серый",
+    "mono_color1": "Цвет 1*",
+    "mono_color2": "Цвет 2*",
+    "colormix_2": "Колормикс (2 цвета)",
+    "colormix_3": "Колормикс (3 цвета)",
+    "colormix_fakt": "Фактурный колормикс",
+    "stonemix": "Стоунмикс"
+  },
+  "mono_color_groups": {
+    "color1_names": [
+      "красный",
+      "черный",
+      "графит",
+      "светло-серый",
+      "жёлтый (горчичный)",
+      "коричневый",
+      "светло-коричневый",
+      "терракот"
+    ],
+    "color2_names": [
+      "белый",
+      "желтый-яркий"
+    ],
+    "grey_name": [
+      "серый"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "fixed",
+  "version": "20260604-2",
+  "issue": "Invalid or unexpected token at appendChild caused by unsafe encoding of multiline packaging strings inside injected script.text",
+  "changed": "JS packaging/encoding only; product prices remain updated; calculation logic unchanged",
+  "validated": {
+    "outer_node_check": [
+      "paver-configurator-embed-safe-template-adaptive-final-curbs-unified-v4.js",
+      "paver-configurator-embed.js",
+      "paver-configurator-embed-safe-template-adaptive-final.js",
+      "paver-configurator-embed-safe-template-adaptive-final-pricefix.js"
+    ],
+    "inner_injected_script_node_check": true,
+    "price_sample_antika_60_grey": 1097.25,
+    "price_sample_antika_60_stonemix": 2710.05
+  },
+  "js_sha256": {
+    "paver-configurator-embed-safe-template-adaptive-final-curbs-unified-v4.js": "3b602ed477d6323ae41c010fb61b3f00e0b1951ca0bf7939163edb597becc4ee",
+    "paver-configurator-embed.js": "3b602ed477d6323ae41c010fb61b3f00e0b1951ca0bf7939163edb597becc4ee",
+    "paver-configurator-embed-safe-template-adaptive-final.js": "3b602ed477d6323ae41c010fb61b3f00e0b1951ca0bf7939163edb597becc4ee",
+    "paver-configurator-embed-safe-template-adaptive-final-pricefix.js": "3b602ed477d6323ae41c010fb61b3f00e0b1951ca0bf7939163edb597becc4ee"
+  }
+}

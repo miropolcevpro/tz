@@ -1,0 +1,47 @@
+{
+  "updated_paver_thicknesses": [
+    "антика:60мм",
+    "брусчатка:80мм",
+    "газонная_решетка:80мм",
+    "классика:60мм",
+    "мегаполис:80мм",
+    "новый_город:40мм",
+    "новый_город:60мм",
+    "новый_город:80мм",
+    "палладио:80мм",
+    "полигональ:60мм",
+    "променад_i:40мм",
+    "променад_i:60мм",
+    "променад_ii:40мм",
+    "променад_ii:60мм",
+    "ригель:60мм",
+    "старый_город:60мм"
+  ],
+  "updated_curbstone_items": [
+    "бр_100.20.8_1000х200х80",
+    "бр_100.30.15_1000х300х150",
+    "бр_100.30.18_1000х300х180"
+  ],
+  "ignored_price_rows_not_in_current_calculator": [
+    "брусчатка:60мм — в текущем калькуляторе этой толщины нет, структуру не расширял"
+  ],
+  "js_files_updated": [
+    "paver-configurator-embed-safe-template-adaptive-final-curbs-unified-v4.js",
+    "paver-configurator-embed-safe-template-adaptive-final-pricefix.js",
+    "paver-configurator-embed-safe-template-adaptive-final.js",
+    "paver-configurator-embed.js"
+  ],
+  "external_price_catalog_updated": "price_catalog.json",
+  "effective_from": "2026-06-03",
+  "unchanged": "формы, изображения, упаковка, веса, площади/шт. на поддоне, логика расчета и EMPTY_PALLET_PRICE не менялись",
+  "known_checks": {
+    "новый_город_40_серый": 791.7,
+    "антика_60_стоунмикс": 2710.05,
+    "бр_100.20.8_серый": 348.02
+  },
+  "validation": [
+    "price_catalog.json parses as JSON",
+    "all 4 JS files pass node --check",
+    "inline fallback price data parses and contains updated prices"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "diagnosis": "Prices are changed in the package. If Tilda shows old prices, the live URL is still serving the old JS: most likely the ZIP or nested folder was uploaded instead of replacing the root JS file, or CDN/browser cache was not purged.",
+  "must_replace_root_files": [
+    "paver-configurator-embed-safe-template-adaptive-final-curbs-unified-v4.js",
+    "price_catalog.json"
+  ],
+  "also_updated_aliases": [
+    "paver-configurator-embed.js",
+    "paver-configurator-embed-safe-template-adaptive-final.js",
+    "paver-configurator-embed-safe-template-adaptive-final-pricefix.js"
+  ],
+  "tilda_script_url": "https://cdn.jsdelivr.net/gh/miropolcevpro/prev_img_ag_2_026@main/paver-configurator-embed-safe-template-adaptive-final-curbs-unified-v4.js?v=20260604-1",
+  "known_new_prices": {
+    "Антика 60 серый": 1097.25,
+    "Новый город 40 серый": 791.7,
+    "БР 100.20.8 серый": 348.02
+  },
+  "unchanged": "runtime calculation logic, forms, images, packaging, weights, pallet price"
+}

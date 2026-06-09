@@ -1,0 +1,79 @@
+{
+  "tech": "mono",
+  "title": "Однотонная",
+  "count": 12,
+  "colors": [
+    {
+      "id": "seryy",
+      "index": 1,
+      "name": "Серый",
+      "file": "technologies/mono/colors/seryy.webp"
+    },
+    {
+      "id": "belyy",
+      "index": 2,
+      "name": "Белый",
+      "file": "technologies/mono/colors/belyy.webp"
+    },
+    {
+      "id": "grafit",
+      "index": 3,
+      "name": "Графит",
+      "file": "technologies/mono/colors/grafit.webp"
+    },
+    {
+      "id": "zheltyy_yarkiy",
+      "index": 4,
+      "name": "Желтый-яркий",
+      "file": "technologies/mono/colors/zheltyy_yarkiy.webp"
+    },
+    {
+      "id": "zheltyy_gorchichnyy",
+      "index": 5,
+      "name": "Жёлтый (горчичный)",
+      "file": "technologies/mono/colors/zheltyy_gorchichnyy.webp"
+    },
+    {
+      "id": "korichnevyy",
+      "index": 6,
+      "name": "Коричневый",
+      "file": "technologies/mono/colors/korichnevyy.webp"
+    },
+    {
+      "id": "krasnyy_yarkiy",
+      "index": 7,
+      "name": "Красный яркий",
+      "file": "technologies/mono/colors/krasnyy_yarkiy.webp"
+    },
+    {
+      "id": "krasnyy",
+      "index": 8,
+      "name": "Красный",
+      "file": "technologies/mono/colors/krasnyy.webp"
+    },
+    {
+      "id": "svetlo_korichnevyy",
+      "index": 9,
+      "name": "Светло-коричневый",
+      "file": "technologies/mono/colors/svetlo_korichnevyy.webp"
+    },
+    {
+      "id": "svetlo_seryy",
+      "index": 10,
+      "name": "Светло-серый",
+      "file": "technologies/mono/colors/svetlo_seryy.webp"
+    },
+    {
+      "id": "terrakot",
+      "index": 11,
+      "name": "Терракот",
+      "file": "technologies/mono/colors/terrakot.webp"
+    },
+    {
+      "id": "chernyy",
+      "index": 12,
+      "name": "Черный",
+      "file": "technologies/mono/colors/chernyy.webp"
+    }
+  ]
+}
